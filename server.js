@@ -25,9 +25,9 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/comms', require('./routes/api/comms'));
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-}); 
+// app.get('/*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// }); 
 
 const port = process.env.PORT || 3001;
 

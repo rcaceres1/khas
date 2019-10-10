@@ -4,21 +4,11 @@ import CreateComm from '../../components/CreateComm/CreateComm'
 
 class AddComm extends Component{
 
-    handleAddComm = async ({username, student, rating}) => {
-        const {user} = this.props
-            const options = {
-                method: 'POST',
-                headers : {
-                    "content-type" : "application/json"
-                },
-                body: JSON.stringify({username, student, rating, user})
-            }    
-           return await createComm(options)
-        }
+    handleAddComm = async (comm) => {
+        const createdComm = await createComm(comm);
+    }
 
     render(){
-        
-
         return(
             <div>
                 <div className="jumbotron">
@@ -27,6 +17,7 @@ class AddComm extends Component{
                 <CreateComm 
                     handleAddComm={this.handleAddComm}
                     history={this.props.history}
+                    user={this.props.user}
                 />
             </div>
         )

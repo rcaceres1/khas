@@ -1,11 +1,14 @@
 import React from "react";
-import CreateComm from "../../components/CreateComm/CreateComm";
-import Navbar from "../../components/Navbar/Navbar";
+import CreateComm from "../CreateComm/CreateComm";
+import Navbar from "../Navbar/Navbar";
+import CommsList from '../CommsList/CommsList';
 import style from "./Comms.module.css";
 
 const Comms = props => {
-  const commList = props.comm.map((comm, index) => {
+  console.log(props)
+  const commList = props.comms && props.comms.map((comm, index) => {
     return (
+      
       <CreateComm
         {...comm}
         key={index}
@@ -16,7 +19,7 @@ const Comms = props => {
     );
   });
 
-  let show = commList.length > 0 ? commList : "Add a Communication Log here!";
+  let show = commList && commList.length > 0 ? commList : "Add a Communication Log here!";
 
   return (
     <div>
@@ -26,6 +29,7 @@ const Comms = props => {
           Welcome, {props.user.name}! See your past communication logs saved
           below!
         </h1>
+        <CommsList />
       </div>
       <div className={style.flex}>{show}</div>
     </div>

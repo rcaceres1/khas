@@ -1,11 +1,20 @@
 const BASE_URL = "/api/comms/";
-async function createComm(options) {
+
+async function createComm(comm) {
+  const options = {
+      method: 'POST',
+      headers : {
+          "content-type" : "application/json"
+      },
+      body: JSON.stringify(comm)
+  }    
   try {
-    const sendPost = await fetch(BASE_URL + "create", options);
-    const postReults = await sendPost.json();
-    return await postReults;
+    const post = await fetch(BASE_URL, options);
+    const postResults = await post.json();
+    return postResults;
   } catch (error) {
     console.log(error);
+    throw Error("Something Went Wrong in Create Comm")
   }
 }
 

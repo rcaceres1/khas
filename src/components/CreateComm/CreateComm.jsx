@@ -6,7 +6,9 @@ class CreateComm extends Component {
   state = {
     username: "",
     student: "",
-    rating: "1"
+    rating: "1",
+    date: new Date(),
+    user: this.props.user ? this.props.user._id : null
   };
 
   handleChange = event => {
@@ -22,7 +24,8 @@ class CreateComm extends Component {
       {
         username: "",
         student: "",
-        rating: "1"
+        rating: "1",
+        user: ""
       },
       () => this.props.history.push("/comms")
     );

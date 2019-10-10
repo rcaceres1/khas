@@ -1,73 +1,87 @@
-import React, {Component} from 'react';
-import {Route, Switch} from 'react-router-dom'
-import HomePage from '../HomePage/HomePage'
-import LoginPage from '../LoginPage/LoginPage'
-import SignupPage from '../SignupPage/SignupPage'
-import userService from '../../utils/userService'
-import CommsFrame from '../CommsFrame/CommsFrame'
-import AddComm from '../AddComm/AddComm'
+import React, { Component } from "react";
+import { Route, Switch } from "react-router-dom";
+import HomePage from "../HomePage/HomePage";
+import LoginPage from "../LoginPage/LoginPage";
+import SignupPage from "../SignupPage/SignupPage";
+import userService from "../../utils/userService";
+import CommsFrame from "../CommsFrame/CommsFrame";
+import AddComm from "../AddComm/AddComm";
 
+import "./App.css";
 
-import './App.css';
-
-class App extends Component{
+class App extends Component {
   constructor() {
     super();
     this.state = {
       user: userService.getUser()
-    }
+    };
   }
 
   handleLogout = () => {
-    userService.logOut()
+    userService.logout();
     this.setState({
       user: null
-    })
-  }
+    });
+  };
 
-  handleSignupOrLogin = ()=> {
-    this.setState({user: userService.getUser()})
-  }
+  handleSignupOrLogin = () => {
+    this.setState({ user: userService.getUser() });
+  };
 
-  
-
-  render(){
+  render() {
     return (
       <div>
         <Switch>
-          <Route exact path='/' render={()=>
-            <HomePage 
-              user={this.state.user}
-              handleLogout={this.handleLogout}
-            />
-          }/>
-          <Route exact path='/comms' render={()=>
-            <CommsFrame
-              user={this.state.user} 
-              handleLogout={this.handleLogout}
-            />
-          }/>
-          <Route exact path='/addComm' render={({history})=>
-            <AddComm
-              user={this.state.user}
-              history={history}
-            />
-          }/>
-          <Route exact path='/signup' render={({ history }) => 
-            <SignupPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-          }/>
-          <Route exact path='/login' render={({ history }) => 
-            <LoginPage
-              history={history}
-              handleSignupOrLogin={this.handleSignupOrLogin}
-            />
-          }/>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <HomePage
+                user={this.state.user}
+                handleLogout={this.handleLogout}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/comms"
+            render={() => (
+              <CommsFrame
+                user={this.state.user}
+                handleLogout={this.handleLogout}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/addComm"
+            render={({ history }) => (
+              <AddComm user={this.state.user} history={history} />
+            )}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={({ history }) => (
+              <SignupPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/login"
+            render={({ history }) => (
+              <LoginPage
+                history={history}
+                handleSignupOrLogin={this.handleSignupOrLogin}
+              />
+            )}
+          />
         </Switch>
       </div>
-    )
+    );
   }
 }
 

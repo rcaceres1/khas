@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Comms from '../Comms/Comms';
+import Comms from '../../components/Comms/Comms';
+import { deleteComms, getComms } from '../../utils/commsService';
 
 class CommsFrame extends Component {
     constructor(){
@@ -28,20 +29,9 @@ class CommsFrame extends Component {
       }
 
 
-    componentDidMount(){
-        const options = {
-            method: 'POST',
-            headers : {
-                "content-type" : "application/json"
-            },
-            body: JSON.stringify(this.props.user)
-        }
-
-        getComms(options).then(results => 
-            this.setState({
-                comms: results
-            })
-        )
+    async componentDidMount(){
+        const comms = await getComms(this.props.user)
+        console.log(comms)
     }
 
     render(){
@@ -59,26 +49,3 @@ class CommsFrame extends Component {
 }
 
 export default CommsFrame
-
-
-
-const BASE_URL='/api/comms/'
-async function getComms(options){
-    try{
-        const fetchComms = await fetch(BASE_URL + 'all', options)
-        const data = await fetchComms.json()
-        return await data
-    } catch(error) {
-        console.log(error)
-    }
-}
-
-async function deleteComms(options){
-    try{
-      const deletedComm = await fetch(BASE_URL + 'deleteComm', options)
-      const data = await deletedComm.json()
-      return await data
-    } catch(error) {
-      console.log(error)
-    }
-  }

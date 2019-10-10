@@ -6,11 +6,12 @@ const commSchema = new Schema(
   {
     username: { type: String, required: true },
     student: { type: String, required: true },
-    date: { type: Date, required: true }
+    date: { type: Date, required: true },
+    user: { type: Schema.Types.ObjectId, ref: 'User' }
   },
   {
     timestamps: true
   }
 );
 
-const Comm = mongoose.model("Comm", commSchema);
+module.exports = mongoose.model("Comm", commSchema);
