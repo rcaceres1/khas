@@ -1,0 +1,18 @@
+.card{
+  margin-top: 20px;
+  box-shadow: 0px 0px 47px -1px 
+}
+
+.loader {
+  border: 16px solid #f3f3f3; 
+  border-top: 16px solid #3498db; 
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1.5s linear infinite;
+}
+
+
+body{
+  background: purple;
+}
