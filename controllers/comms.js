@@ -5,6 +5,7 @@ module.exports = {
     createComm,
     deleteComm,
     editComm,
+    updateComm
   };
 
   function editComm(req, res){
@@ -13,8 +14,15 @@ module.exports = {
   }
 
   function deleteComm(req, res){
-    const deletedComm = Comm.findByIdAndRemove(req.params.id);
-    res.status(200).json(deletedComm);
+    Comm.findByIdAndDelete(req.params.id, function(err, comm) {
+      if(err) {
+        console.log(err)
+        res.status(401).json({"message": "something went wrong"})
+      } else {
+        console.log(comm)
+        res.status(200).json(comm);
+      }
+    });
   }
   
   function createComm(req, res) {
@@ -31,11 +39,12 @@ module.exports = {
     })
   }
   
-  function getAllComms(req, res) {
-    User.findById(req.body._id)
-    .then(person=>{
-        console.log(person)
-        res.status(200).json(person)
-    })
-    .catch(err => console.log(err))
+  async function getAllComms(req, res) {
+    const comms = await Comm.find({user: req.user._id});
+    res.status(200).json(comms);
+  }
+
+  async function updateComm(req, res) {
+    const updatedPuppy = await Puppy.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    res.status(200).json(updatedPuppy);
   }

@@ -1,48 +1,30 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import style from "./CreateComm.module.css";
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
-class CreateComm extends Component {
+class EditCommPage extends Component {
   state = {
-    username: "",
-    date: new Date(),
-    student: "",
-    rating: "1",
-    ate: "",
-    fun: "",
-    need: "",
-    notes: "",
-    user: this.props.user ? this.props.user._id : null
+    invalidForm: false,
+    formData: this.props.location.state.comm
   };
 
-  handleChange = event => {
+  formRef = React.createRef();
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.handleUpdateComm(this.state.formData);
+  };
+
+  handleChange = e => {
+    const formData = {...this.state.formData, [e.target.name]: e.target.value};
     this.setState({
-      [event.currentTarget.name]: event.currentTarget.value
+      formData,
+      invalidForm: !this.formRef.current.checkValidity()
     });
   };
-
-  handleSubmit = async event => {
-    event.preventDefault();
-    await this.props.handleAddComm(this.state);
-    this.setState(
-      {
-        username: "",
-        student: "",
-        rating: "1",
-        ate: "",
-        fun: "",
-        need: "",
-        notes: "",
-        user: ""
-      },
-      () => this.props.history.push("/comms")
-    );
-  };
-
   render() {
     return (
       <div className={`container ${style.flex}`}>
-        <form onSubmit={this.handleSubmit} autoComplete="off">
+         <form ref={this.formRef} autoComplete="off" onSubmit={this.handleSubmit}>
           <div className="form-row">
             <div className="form-group col-md-6">
               <label>Teacher</label>
@@ -130,13 +112,20 @@ class CreateComm extends Component {
           </div>
           <div>
             <input className="btn btn-info" type="submit" />
-          </div>
+          {/* </div>
           <Link to="/">Home Page || </Link>
-          <Link to="/comms">Back to your Communication Logs</Link>
-        </form>
-      </div>
+          <Link to="/comms">Back to your Communication Logs</Link>*/}
+      </div> 
+      <button
+      type="submit"
+      className="btn btn-xs"
+      disabled={this.state.invalidForm}
+    >
+      Update Communication Log
+    </button>&nbsp;&nbsp;
+    <Link to='/'>CANCEL</Link>
+  </form>
+  </div>
     );
   }
 }
-
-export default CreateComm;

@@ -10,7 +10,7 @@ const HomePage = (props) =>{
         handleLogout={props.handleLogout}
       />
       <div>
-        <h3>Welcome to Khas (pronounced 'hos')! Your one-stop shop to communicate between you and your parents to discuss your
+        <h3>Welcome to Khas (pronounced 'haas')! Your one-stop shop to communicate between you and your parents to discuss your
             exceptional child's progress!</h3>
         {props.user ? <h4>Add a communication log to get started!</h4> : <h4>Login to get started!</h4>}
       </div>

@@ -45,8 +45,9 @@ class App extends Component {
           <Route
             exact
             path="/comms"
-            render={() => (
+            render={(props) => (
               <CommsFrame
+                {...props}
                 user={this.state.user}
                 handleLogout={this.handleLogout}
               />
