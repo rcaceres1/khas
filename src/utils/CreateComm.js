@@ -1,10 +1,12 @@
+import tokenService from "../utils/tokenService"; 
 const BASE_URL = "/api/comms";
 
 async function createComm(comm) {
   const options = {
       method: 'POST',
       headers : {
-          "content-type" : "application/json"
+          "content-type" : "application/json",
+          Authorization: tokenService.getToken()
       },
       body: JSON.stringify(comm)
   }    

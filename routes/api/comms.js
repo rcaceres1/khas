@@ -8,6 +8,7 @@ const commCtrl = require('../../controllers/comms');
 router.use(require('../../config/auth'));
 
 router.get('/all', checkAuth, commCtrl.getAllComms)
+router.get('/:id', checkAuth, commCtrl.getComm)
 router.post('/', checkAuth, commCtrl.createComm)
 router.delete('/:id', checkAuth, commCtrl.deleteComm)
 router.put('/:id', commCtrl.updateComm);

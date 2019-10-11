@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import HomePage from "../HomePage/HomePage";
 import LoginPage from "../LoginPage/LoginPage";
 import SignupPage from "../SignupPage/SignupPage";
+import EditComm from "../EditCommPage/EditCommPage";
 import userService from "../../utils/userService";
 import CommsFrame from "../CommsFrame/CommsFrame";
 import AddComm from "../AddComm/AddComm";
@@ -45,7 +46,7 @@ class App extends Component {
           <Route
             exact
             path="/comms"
-            render={(props) => (
+            render={props => (
               <CommsFrame
                 {...props}
                 user={this.state.user}
@@ -58,6 +59,13 @@ class App extends Component {
             path="/addComm"
             render={({ history }) => (
               <AddComm user={this.state.user} history={history} />
+            )}
+          />
+          <Route
+            exact
+            path="/update/:id"
+            render={({ history }) => (
+              <EditComm user={this.state.user} history={history} />
             )}
           />
           <Route

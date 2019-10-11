@@ -1,5 +1,6 @@
 import React from "react";
 import DeleteButton from "../DeleteButton/DeleteButton";
+import {Link} from "react-router-dom";
 import style from "./CommsList.module.css";
 
 function CommsList(props) {
@@ -15,6 +16,7 @@ function CommsList(props) {
         <li className="list-group-item">I need: {props.need}</li>
         <li className="list-group-item">Notes/Observations: {props.notes}</li>
         <DeleteButton id={props.id} handleDeleteComm={props.handleDeleteComm} />
+        <Link to={'/update/'+props.id} ><button>Update</button></Link>
         {/* <Link
           className='btn btn-xs btn-warning'
           to={{

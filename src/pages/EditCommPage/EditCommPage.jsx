@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import style from "./EditCommPage.css";
 
-class EditCommPage extends Component {
+class EditComm extends Component {
   state = {
-    invalidForm: false,
-    formData: this.props.location.state.comm
+      username: "",
+      date: new Date(),
+      student: "",
+      rating: "1",
+      ate: "",
+      fun: "",
+      need: "",
+      notes: "",
+      user: this.props.user ? this.props.user._id : null,
+      invalidForm: false,
+      // formData: this.props.location.state.comm
   };
 
   formRef = React.createRef();
@@ -21,6 +31,8 @@ class EditCommPage extends Component {
       invalidForm: !this.formRef.current.checkValidity()
     });
   };
+
+  
   render() {
     return (
       <div className={`container ${style.flex}`}>
@@ -129,3 +141,5 @@ class EditCommPage extends Component {
     );
   }
 }
+
+export default EditComm;
