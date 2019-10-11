@@ -33,7 +33,10 @@ userSchema.set("toJSON", {
 });
 
 userSchema.methods.comparePassword = function(tryPassword, cb) {
-  bcrypt.compare(tryPassword, this.password, cb);
+  bcrypt.compare(tryPassword, this.password, function(err, isMatch) {
+    if(err) return cb(err);
+    cb(null, isMatch)
+  });
 };
 
 module.exports = mongoose.model("User", userSchema);

@@ -1,4 +1,3 @@
-const User = require('../models/user');
 const Comm = require('../models/comm');
 module.exports = {
     getAllComms,

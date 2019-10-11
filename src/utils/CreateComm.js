@@ -1,4 +1,4 @@
-const BASE_URL = "/api/comms/";
+const BASE_URL = "/api/comms";
 
 async function createComm(comm) {
   const options = {

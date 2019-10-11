@@ -4,7 +4,6 @@ import CommsList from "../CommsList/CommsList";
 import style from "./Comms.module.css";
 
 const Comms = props => {
-  console.log("list", props);
   const commList =
     props.comms &&
     props.comms.map((comm, index) => {
