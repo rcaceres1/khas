@@ -7,7 +7,7 @@ class CreateComm extends Component {
     username: "",
     date: new Date(),
     student: "",
-    rating: "1",
+    rating: "Great!",
     ate: "",
     fun: "",
     need: "",
@@ -70,10 +70,10 @@ class CreateComm extends Component {
                 value={this.state.rating}
                 className="form-control"
               >
-                <option value="1">Great!</option>
-                <option value="2">So-So</option>
-                <option value="3">Sad</option>
-                <option value="4">I felt sick...</option>
+                <option value="Great!">Great!</option>
+                <option value="So-So">So-So</option>
+                <option value="Sad">Sad</option>
+                <option value="I felt sick...">I felt sick...</option>
               </select>
             </div>
             <div className="form-group col-md-6">
@@ -84,10 +84,10 @@ class CreateComm extends Component {
                 value={this.state.ate}
                 className="form-control"
               >
-                <option value="1">All of my food!</option>
-                <option value="2">Some of food..</option>
-                <option value="3">Very little..</option>
-                <option value="4">None </option>
+                <option value="all of my food">All of my food!</option>
+                <option value="some">some food..</option>
+                <option value="very little">Very little..</option>
+                <option value="none">None </option>
               </select>
             </div>
             <div className="form-group col-md-6">
@@ -98,15 +98,15 @@ class CreateComm extends Component {
                 value={this.state.fun}
                 className="form-control"
               >
-                <option value="1">Math</option>
-                <option value="2">Science</option>
-                <option value="3">Circle Time</option>
-                <option value="4">PE</option>
-                <option value="5">Music</option>
-                <option value="6">Recess</option>
-                <option value="7">Speech</option>
-                <option value="8">Cooking</option>
-                <option value="8">Art</option>
+                <option value="Math">Math</option>
+                <option value="Scienc">Science</option>
+                <option value="Circle Time">Circle Time</option>
+                <option value="PE">PE</option>
+                <option value="Music">Music</option>
+                <option value="Recess">Recess</option>
+                <option value="Speech">Speech</option>
+                <option value="Cooking">Cooking</option>
+                <option value="Art">Art</option>
               </select>
             </div>
             <div className="form-group col-md-6">

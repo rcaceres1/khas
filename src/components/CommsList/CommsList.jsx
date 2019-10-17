@@ -10,8 +10,9 @@ function CommsList(props) {
       <ul className="list-group list-group-flush">
         <li className="list-group-item">Teacher: {props.username}</li>
         <li className="list-group-item">Student: {props.student}</li>
+        <li className="list-group-item">Today, I did: {props.rating}</li>
         <li className="list-group-item">Date: {props.date}</li>
-        <li className="list-group-item">I ate {props.ate} of my lunch.</li>
+        <li className="list-group-item">I ate {props.ate} at lunch.</li>
         <li className="list-group-item">I had fun at {props.fun}</li>
         <li className="list-group-item">I need: {props.need}</li>
         <li className="list-group-item">Notes/Observations: {props.notes}</li>
